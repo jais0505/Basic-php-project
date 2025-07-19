@@ -1,5 +1,26 @@
 <?php
 include("../Assets/connection/connection.php");
+
+$district_name;
+if(isset($_POST['btn_submit'])){
+  $disrict_name=$_POST['txt_districtname'];
+  $inQuery="insert into tbl_district(district_name) values('".$disrict_name."')";
+  if($con->query($inQuery)){
+    ?>
+    <script>
+      alert("District added");
+      window.location="district.php";
+    </script>
+    <?php
+  } else{
+    ?>
+    <script>
+      alert("Inerstion Failed");
+      window.location="district.php";
+    </script>
+    <?php
+  }
+}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27,5 +48,23 @@ include("../Assets/connection/connection.php");
     </tr>
   </table>
 </form>
+<br><br>
+<table border="1">
+  <tr>
+    <th width="100">Sl NO</th>
+    <th width="100">District</th>
+    <th width="100">Action</th>
+  </tr>
+  <tr>
+    <php?
+      ?$selQuery="select * from tbl_district()";
+      $row=$con->query($selQuery);
+    ?>
+    <td width="100"></td>
+    <td width="100"></td>
+    <td width="100"></td>
+  
+  </tr>
+</table>
 </body>
 </html>

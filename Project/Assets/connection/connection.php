@@ -4,9 +4,7 @@ $user="root";
 $password="";
 $db="db_basic";
 $con=mysqli_connect($server,$user,$password,$db);
-if($con){
-    echo "Database connected";
-} else{
-    echo "Connection failed";
+if(!$con){
+     echo "Connection failed";
 }
 ?>
