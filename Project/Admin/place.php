@@ -132,7 +132,7 @@ $pid=$data['place_id'];
     <td><div align="center"><?php echo $i; ?></div></td>
     <td><?php echo $data['place_name'] ?></td>
     <td><?php echo $data['district_name'] ?></td>
-    <td><a href="place.php?did=<?php echo $data['place_id'] ?>">delete</a>  <a href="place.php?eid=<?php echo $data['place_id'] ?>">edit</a></td>
+    <td><a href="place.php?did=<?php echo $data['place_id'] ?>">delete</a><a href="place.php?eid=<?php echo $data['place_id'] ?>">edit</a></td>
   </tr>
    <?php
       }

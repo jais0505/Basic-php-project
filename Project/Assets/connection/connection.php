@@ -8,6 +8,6 @@ if(!$con){
      echo "Connection failed";
 } 
 // else{
-// //      echo "Connected"
-// // }
+//      echo "Connected";
+// }
 ?>
