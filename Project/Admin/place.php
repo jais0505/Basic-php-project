@@ -9,10 +9,10 @@ $pid = "";
 
 if(isset($_POST['btn_submit'])){
   $place=$_POST['txt_place'];
-  $dis_id=$_POST['sel_district'];
+  $dis=$_POST['sel_district'];
   $eid=$_POST['txt_hidden'];
   if($eid){
-    $upQuery="update tbl_place set place_name='".$place."' where place_id='".$eid."'";
+    $upQuery="update tbl_place set place_name='".$place."', district_id='".$dis."' where place_id='".$eid."'";
     if($con->query($upQuery)){
       ?>
         <script>
@@ -67,6 +67,7 @@ $row=$con->query($selQuery);
 $data=$row->fetch_assoc();
 $p_name=$data['place_name'];
 $pid=$data['place_id'];
+$dis_id=$data['district_id'];
 }
 
 ?>
@@ -92,9 +93,17 @@ $pid=$data['place_id'];
               $selQuery="select * from tbl_district";
               $row=$con->query($selQuery);
               while($data=$row->fetch_assoc()){
-          
-            ?>
-            <option value="<?php echo $data['district_id'] ?>"><?php echo $data['district_name'] ?></option>
+                ?>
+                <option
+                  <?php
+                  if($dis_id==$data['district_id']){
+                    echo "selected";
+                  }
+                  ?>
+                  value="<?php echo $data['district_id'];  ?>">
+                  <?php echo $data['district_name']; ?>
+              </option>
+           
              <?php
                 }
             ?>
@@ -132,7 +141,7 @@ $pid=$data['place_id'];
     <td><div align="center"><?php echo $i; ?></div></td>
     <td><?php echo $data['place_name'] ?></td>
     <td><?php echo $data['district_name'] ?></td>
-    <td><a href="place.php?did=<?php echo $data['place_id'] ?>">delete</a><a href="place.php?eid=<?php echo $data['place_id'] ?>">edit</a></td>
+    <td><a href="place.php?did=<?php echo $data['place_id'] ?>">delete</a> <a href="place.php?eid=<?php echo $data['place_id'] ?>">edit</a></td>
   </tr>
    <?php
       }
